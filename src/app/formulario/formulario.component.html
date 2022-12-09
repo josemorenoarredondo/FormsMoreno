@@ -1,0 +1,57 @@
+<div class="m-4">
+    <!-- <form 
+        [formGroup]="formulario" (ngSubmit)="submit()" 
+            [ngClass]="formulario.invalid && formulario.touched ? 'error' : ''">
+        Nombre: <input type="text" formControlName="nombre" required="">
+        <br>
+        Apellido: <input type="text" formControlName="nombre" required="">
+        <br>
+        Edad: <input type="number" formControlName="edad">
+        <br>
+        Email <input type="text" formControlName="email">
+        <br>
+        Contraseña <input type="text" formControlName="contraseña">
+        <button type="submit">Confirmar</button>
+    </form> -->
+    <br>
+    <div class="car-body">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-3 mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" formControlName="nombre" class="form-control" [ngClass]="formulario.get('nombre')?.invalid && formulario.get('nombre')?.dirty ? 'mensaje' : ''">
+                    <span *ngIf="formulario.get('nombre')?.errors?.['required'] " style="color:red;">El nombre es requerido</span>
+                </div>
+                <div class="col-3 mb-3">
+                    <label class="form-label">Apellido</label>
+                    <input type="text" formControlName="apellido" class="form-control" [ngClass]="formulario.get('apellido')?.invalid && formulario.get('apellido')?.dirty ? 'mensaje' : ''">
+                    <span *ngIf="formulario.get('apellido')?.errors?.['required'] " style="color:red;">El apellido es requerido</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 mb-3">
+                    <label class="form-label">Edad</label>
+                    <input type="number" formControlName="edad" class="form-control" [ngClass]="formulario.get('edad')?.invalid && formulario.get('edad')?.dirty ? 'mensaje' : ''">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="formulario.get('email')?.invalid && formulario.get('email')?.dirty ? 'mensaje' : ''">
+                    <span *ngIf="formulario.get('email')?.errors?.['required'] " style="color:red;">El email es requerido</span>
+                    <span *ngIf="formulario.get('email')?.errors?.['email'] " style="color:red;">El email es validado</span>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-3 mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input type="text" formControlName="contraseña" class="form-control" [ngClass]="formulario.get('contraseñ')?.invalid && formulario.get('contraseña')?.dirty ? 'mensaje' : ''">
+                    <span *ngIf="formulario.get('contraseña')?.errors?.['minlength']">Minimo 8 caracteres</span>
+                </div>
+            </div>
+            <br>
+            <button type="submit">Confirmar</button>
+        </form>
+    </div>
+    
+</div>
